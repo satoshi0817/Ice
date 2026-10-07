@@ -36,8 +36,10 @@ final class MenuBarOverlayPanel: NSPanel {
         ///   - flag: The update flag to set the task for.
         ///   - timeout: The timeout of the task.
         ///   - operation: The operation for the task to perform.
-        func setTask(for flag: UpdateFlag, timeout: Duration, operation: @escaping () async throws -> Void) {
+        func setTask(for flag: UpdateFlag, timeout: Duration, operation: @escaping @MainActor () async throws -> Void) {
             cancelTask(for: flag)
+            // The timeout runs on detached tasks, but panel state and its Combine
+            // subscribers must stay on the main actor while sections change.
             tasks[flag] = Task.detached(timeout: timeout) {
                 try await operation()
             }
