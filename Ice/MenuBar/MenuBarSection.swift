@@ -129,6 +129,7 @@ final class MenuBarSection {
 
     /// Shows the section.
     func show() {
+        DiagnosticsManager.shared.record("Section show: \(name)")
         guard
             let appState,
             isHidden
@@ -190,6 +191,7 @@ final class MenuBarSection {
 
     /// Hides the section.
     func hide() {
+        DiagnosticsManager.shared.record("Section hide: \(name)")
         guard
             let appState,
             !isHidden
@@ -231,6 +233,7 @@ final class MenuBarSection {
 
     /// Toggles the visibility of the section.
     func toggle() {
+        DiagnosticsManager.shared.record("Section toggle: \(name)")
         if isHidden {
             show()
         } else {

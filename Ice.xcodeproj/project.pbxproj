@@ -5,6 +5,18 @@
 	};
 	objectVersion = 70;
 	objects = {
+		D1A600000000000000000002 = { isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1A600000000000000000003 = { isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = IceTests; sourceTree = "<group>"; };
+		D1A600000000000000000004 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		D1A600000000000000000005 = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		D1A600000000000000000006 = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		D1A60000000000000000000B = { isa = PBXContainerItemProxy; containerPortal = 716683222A767E6A006ABF84; proxyType = 1; remoteGlobalIDString = 716683292A767E6A006ABF84; remoteInfo = Ice; };
+		D1A60000000000000000000A = { isa = PBXTargetDependency; target = 716683292A767E6A006ABF84; targetProxy = D1A60000000000000000000B; };
+		D1A600000000000000000001 = { isa = PBXNativeTarget; buildConfigurationList = D1A600000000000000000007; buildPhases = (D1A600000000000000000004, D1A600000000000000000005, D1A600000000000000000006,); buildRules = (); dependencies = (D1A60000000000000000000A,); fileSystemSynchronizedGroups = (D1A600000000000000000003,); name = IceTests; productName = IceTests; productReference = D1A600000000000000000002; productType = "com.apple.product-type.bundle.unit-test"; };
+		D1A600000000000000000008 = { isa = XCBuildConfiguration; buildSettings = { BUNDLE_LOADER = "$(TEST_HOST)"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ice.app/Contents/MacOS/Ice"; CODE_SIGN_STYLE = Automatic; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development"; DEVELOPMENT_TEAM = 4LPTZP2QZM; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = com.satoshi0817.IceTests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/../Frameworks", "@loader_path/../Frameworks",); }; name = Debug; };
+		D1A600000000000000000009 = { isa = XCBuildConfiguration; buildSettings = { BUNDLE_LOADER = "$(TEST_HOST)"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ice.app/Contents/MacOS/Ice"; CODE_SIGN_STYLE = Automatic; "CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development"; DEVELOPMENT_TEAM = 4LPTZP2QZM; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = com.satoshi0817.IceTests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/../Frameworks", "@loader_path/../Frameworks",); }; name = Release; };
+		D1A600000000000000000007 = { isa = XCConfigurationList; buildConfigurations = (D1A600000000000000000008, D1A600000000000000000009,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+
 
 /* Begin PBXBuildFile section */
 		170423D92B56DE78004A2549 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 170423D82B56DE78004A2549 /* Sparkle */; };
@@ -52,6 +64,7 @@
 		716683212A767E6A006ABF84 = {
 			isa = PBXGroup;
 			children = (
+				D1A600000000000000000003 /* IceTests */,
 				71BDFBE12C978E2A00EF145F /* Ice */,
 				7166832B2A767E6A006ABF84 /* Products */,
 			);
@@ -61,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				7166832A2A767E6A006ABF84 /* Ice.app */,
+				D1A600000000000000000002 /* IceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,6 +120,7 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					D1A600000000000000000001 = { CreatedOnToolsVersion = 16.4; TestTargetID = 716683292A767E6A006ABF84; };
 					716683292A767E6A006ABF84 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -131,6 +146,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				D1A600000000000000000001 /* IceTests */,
 				716683292A767E6A006ABF84 /* Ice */,
 			);
 		};
@@ -309,7 +325,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1120;
+				CURRENT_PROJECT_VERSION = 1121;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -324,7 +340,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.11.16;
+				MARKETING_VERSION = 0.11.17;
 				PRODUCT_BUNDLE_IDENTIFIER = com.satoshi0817.Ice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -341,7 +357,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1120;
+				CURRENT_PROJECT_VERSION = 1121;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -356,7 +372,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.11.16;
+				MARKETING_VERSION = 0.11.17;
 				PRODUCT_BUNDLE_IDENTIFIER = com.satoshi0817.Ice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

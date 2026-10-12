@@ -30,6 +30,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
+        if !appState.isPreview {
+            DiagnosticsManager.shared.start(permissions: appState.permissionsManager)
+        }
+
         // Dismiss the windows.
         appState.dismissSettingsWindow()
         appState.dismissPermissionsWindow()
@@ -57,6 +61,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 appState.openPermissionsWindow()
             }
         }
+    }
+
+    func applicationWillTerminate(_ notification: Notification) {
+        if appState?.isPreview == false { DiagnosticsManager.shared.stop() }
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

@@ -48,14 +48,15 @@ final class PermissionsManager: ObservableObject {
         var c = Set<AnyCancellable>()
 
         Publishers.Merge(
-            accessibilityPermission.$hasPermission.mapToVoid(),
-            screenRecordingPermission.$hasPermission.mapToVoid()
+            accessibilityPermission.$hasPermission.removeDuplicates().mapToVoid(),
+            screenRecordingPermission.$hasPermission.removeDuplicates().mapToVoid()
         )
         .receive(on: DispatchQueue.main)
         .sink { [weak self] in
             guard let self else {
                 return
             }
+            DiagnosticsManager.shared.record("Permissions: Accessibility=\(accessibilityPermission.hasPermission), Screen Recording=\(screenRecordingPermission.hasPermission)")
             if allPermissions.allSatisfy({ $0.hasPermission }) {
                 permissionsState = .hasAllPermissions
             } else if requiredPermissions.allSatisfy({ $0.hasPermission }) {

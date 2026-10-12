@@ -178,10 +178,12 @@ final class IceBarPanel: NSPanel {
         // need to update manually once before showing the panel to prevent the color from flashing.
         colorManager.updateAllProperties(with: frame, screen: screen)
 
+        DiagnosticsManager.shared.record("IceBar show: \(section)")
         orderFrontRegardless()
     }
 
     override func close() {
+        if isVisible { DiagnosticsManager.shared.record("IceBar hide") }
         super.close()
         contentView = nil
         currentSection = nil

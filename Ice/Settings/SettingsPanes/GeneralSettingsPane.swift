@@ -74,6 +74,23 @@ struct GeneralSettingsPane: View {
             IceSection {
                 spacingOptions
             }
+            IceSection("Diagnostics") {
+                IceLabeledContent {
+                    Button("Export…") {
+                        DiagnosticsManager.shared.save(permissions: appState.permissionsManager)
+                    }
+                    .accessibilityLabel(Text("Export diagnostics"))
+                    .accessibilityHint(Text("Bundles crash reports and recent activity logs into a zip. Nothing is sent automatically."))
+                } label: {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Export diagnostics")
+                        Text("Bundles crash reports and recent activity logs into a zip. Nothing is sent automatically.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .accessibilityHidden(true)
+                }
+            }
         }
         .alert(isPresented: $isPresentingError, error: presentedError) {
             Button("OK") {

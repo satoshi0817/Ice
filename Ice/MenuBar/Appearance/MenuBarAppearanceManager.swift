@@ -10,7 +10,13 @@ import Combine
 @MainActor
 final class MenuBarAppearanceManager: ObservableObject {
     /// The current menu bar appearance configuration.
-    @Published var configuration: MenuBarAppearanceConfigurationV2 = .defaultConfiguration
+    @Published var configuration: MenuBarAppearanceConfigurationV2 = .defaultConfiguration {
+        didSet {
+            if configuration != oldValue {
+                DiagnosticsManager.shared.record("Appearance changed: dynamic=\(configuration.isDynamic), shape=\(configuration.shapeKind)")
+            }
+        }
+    }
 
     /// The currently previewed partial configuration.
     @Published var previewConfiguration: MenuBarAppearancePartialConfiguration?
@@ -58,6 +64,12 @@ final class MenuBarAppearanceManager: ObservableObject {
     /// Configures the internal observers for the manager.
     private func configureCancellables() {
         var c = Set<AnyCancellable>()
+
+        NSApp.publisher(for: \.effectiveAppearance)
+            .map { $0.name.rawValue }
+            .removeDuplicates()
+            .sink { name in DiagnosticsManager.shared.record("Dynamic appearance: \(name)") }
+            .store(in: &c)
 
         NotificationCenter.default
             .publisher(for: NSApplication.didChangeScreenParametersNotification)
